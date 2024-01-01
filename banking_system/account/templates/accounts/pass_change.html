@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load crispy_forms_tags %}
+    <form method="post" style="width: 50%;" novalidate>
+        {% csrf_token %}
+        <!-- {{form|crispy}} -->
+        {% for f in form %}
+            {{f.label_tag}}
+            {{f}}
+            <p class="text-danger">{{f.errors|striptags}}</p>
+        {% endfor %}
+        <div class="flex items-center justify-between">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                Change Password
+            </button>
+        </div>
+    </form>
+{% endblock %}
